@@ -1,0 +1,76 @@
+#delete--->
+
+#importing packages
+import json
+import boto3
+#function definition
+def lambda_handler(event,context):
+    print(event)
+    id=int(event['pathParameters']['id'])
+    print(id)
+    dynamodb = boto3.resource('dynamodb')
+    #table name
+    table = dynamodb.Table('stratacent-raviraj')
+    #inserting values into table
+    response = table.delete_item( Key= {'id': id})
+    response={"Message":"Item with id = "+str(id)+" is deleted"}
+    return response
+
+
+#put--->
+import json
+import boto3
+
+def lambda_handler(event,context):
+    print(event)
+    dynamodb = boto3.resource('dynamodb')
+
+    table = dynamodb.Table('stratacent-raviraj')
+    print(event['body'])
+    
+    body = json.loads(event['body'])
+    id = body['id']
+    name = body['name']
+    price = body['price']
+    quantity = body['quantity']
+  
+   
+
+    response = table.put_item( Item={"id":id, "name":name, "price":price, "quantity":quantity})
+    print(response)
+    response={"Message":"Item with id = "+id+" has been added"}
+    return(response)
+    
+#scan---->
+#importing packages
+import json
+import boto3
+#function definition
+def lambda_handler(event,context):
+    dynamodb = boto3.resource('dynamodb')
+    #table name
+    table = dynamodb.Table('stratacent-raviraj')
+    #inserting values into table
+    #response = table.put_item(
+       # Item={ 'id': '3', 'name':'aniket','price':'550','quantity':'90'})
+    #return response
+    response = table.scan()
+    
+    return response['Items']
+
+
+#get-->
+
+import json
+import boto3
+#function definition
+def lambda_handler(event,context):
+    print(event)
+    id=event['pathParameters']['id']
+    dynamodb = boto3.resource('dynamodb')
+    #table name
+    table = dynamodb.Table('stratacent-raviraj')
+    #inserting values into table
+    response = table.get_item( Key={"id":id})
+    return response['Item']
+ 

@@ -1,0 +1,27 @@
+<html lang="en-US">
+<head>
+  <title>Weather</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="/Index.js"></script>
+  
+</head>
+<body>
+  <div class="container">
+    <h1>Add Items to DyanmoDB!</h1>
+    
+    <label for="id">Enter item ==> id:</label>
+    <input id="id" type="text">
+    <label for="name"> name:</label>
+    <input id="name" type="text">
+    <label for="price"> price:</label>
+    <input id="price" type="text">
+    <label for="qty"> Qty:</label>
+    <input id="qty" type="text">
+    <button class="btn-success" id="AddItems">Add Items</button>
+    <button class="btn-success" onclick="location.href='./index.html'"">Get/Delete Items</button>
+    <div class="showErrors"></div>
+    <div id="container"></div>
+    <div class="showTemp"></div>
+  </div>
+</body>
+</html>

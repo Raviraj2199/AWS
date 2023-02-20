@@ -1,0 +1,74 @@
+#ec2rds.py 
+import pymysql
+
+db = pymysql.connect(
+    host = "google-101-raviraj-01db.caddif7rrut7.ap-south-1.rds.amazonaws.com",
+    user = "admin",
+    password = "password"
+)
+
+cursor = db.cursor()
+print("rds db connected ....")
+
+cursor.execute("select version()")
+
+query_result = cursor.fetchall()
+print(query_result)
+
+
+sql1 = "use maindb ;"
+
+cursor.execute(sql1)
+
+print("connected to maindb")
+
+sql2 = "select * from test1"
+
+cursor.execute(sql2)
+
+query_result2 = cursor.fetchall()
+print(query_result2)
+
+
+#ec2rds1 
+import pymysql 
+
+db = pymysql.connect(
+    host = "google-101-raviraj-01db.caddif7rrut7.ap-south-1.rds.amazonaws.com",
+    user = "admin",
+    password = "password"
+)
+
+cursor = db.cursor()
+print("rds db connected...")
+
+cursor.execute("select version()")
+
+query_result = cursor.fetchall()
+print(query_result)
+
+
+#ec2rds3 
+import pymysql 
+
+db = pymysql.connect(
+    host = "google-101-raviraj-01db.caddif7rrut7.ap-south-1.rds.amazonaws.com",
+    user = "admin",
+    password = "password"
+)
+cursor = db.cursor()
+print("rds db connected...")
+cursor.execute("select version()")
+query1=cursor.fetchall()
+print(query1)
+sql1= "use maindb;"
+cursor.execute(sql1)
+print("connected to maindb")
+sql3='''CREATE TABLE PERSONS(FIRST_NAME CHAR(20) NOT NULL,LAST_NAME CHAR(20),AGE INT,SEX CHAR(1),INCOME FLOAT)'''
+cursor.execute(sql3)
+sql4='''insert into PERSONS value ('raj','ravi',22,'male',75000)'''
+cursor.execute(sql4)
+sql5='select * from PERSONS'
+cursor.execute(sql5)
+query3=cursor.fetchall()
+print(query3)
